@@ -1,8 +1,8 @@
 package main
 
 import (
-    "fmt"
     "github.com/gonum/matrix/mat64"
+    "github.com/rodrigolece/transpose/matutil"
 )
 
 func transpose(A mat64.Matrix) mat64.Matrix{
@@ -28,26 +28,9 @@ func transpose(A mat64.Matrix) mat64.Matrix{
 
 func main() {
     A := mat64.NewDense(2,3, []float64{0,1,0,0,2,3})
-    printMat(A)
+    matutil.PrintMat(A)
 
-    printMat(transpose(A))
-}
-
-
-func printMat(A mat64.Matrix) {
-    r, s := A.Dims()
-
-    fmt.Printf("(")
-    for  i := 0 ; i < r ; i++ {
-        fmt.Printf("\t")
-        for j := 0 ; j < s ; j ++ {
-            fmt.Printf("%0.1f\t", A.At(i,j))
-        }
-        if i != r-1 {
-            fmt.Printf("\n")
-        }
-    }
-    fmt.Printf(")\n")
+    matutil.PrintMat(transpose(A))
 }
 
 
